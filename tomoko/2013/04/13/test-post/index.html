@@ -9,8 +9,8 @@
   <meta name="author" content="Tomoko Sohda">
 
   
-  <meta name="description" content="$B$3$N%V%m%0$N$D$/$j$+$?(B $B:G6a$h$/(Busername.github.com/blog/2013/04/13/title$B$H$$$C$?(Buri$B$N%V%m%0$r8+$+$1$k$h$&amp;$K$J$C$?!#(B
-username. &hellip;">
+  <meta name="description" content="
+">
   <meta name="keywords" content="Github">
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,157 +92,7 @@ username. &hellip;">
   </header>
 
 
-<div class="entry-content"><h1>$B$3$N%V%m%0$N$D$/$j$+$?(B</h1>
-
-<p>$B:G6a$h$/(B<code>username.github.com/blog/2013/04/13/title</code>$B$H$$$C$?(Buri$B$N%V%m%0$r8+$+$1$k$h$&amp;$K$J$C$?!#(B
-<code>username.github.com</code>$B$,$+$C$3$$$$$+$i:n$j$?$/$J$C$?$N$G:n$C$F$_$?!#(B</p>
-
-<h2>$B$3$N%V%m%0$O2?!)(B</h2>
-
-<p>$B2&lt;$NJ}$K=q$$$F$k(B<code>Powered by Octopress</code>$B$N$H$*$j(B<a href="http://octopress.org/">Octopress</a>$B$G:n$C$F$$$<sup>$9!#(B</sup>
-$B8x&lt;0%5%$%H$K=q$$$F$kDL$j$K$d$C$?$i$G$-$<sup>$7$?!*(B</sup></p>
-
-<h2>$BI,MW$J$b$N(B</h2>
-
-<ul>
-<li>$B6=L#!*(B</li>
-<li>ruby</li>
-<li>github$B%&#8221;%+%&amp;%s%H(B</li>
-</ul>
-
-
-<h2>$B$d$C$?$3$H(B</h2>
-
-<h3>$B%V%m%0MQ%j%]%8%H%j:n@.(B</h3>
-
-<p>$B$3$l$O(Bgithub$B$N5!G=!#(B
-$B$3$NJU(B( https://help.github.com/categories/20/articles )$B$r$_$k$H>\$7$/=q$$$F$?!#(B</p>
-
-<ol>
-<li>https://github.com/new $B$+$i(B<code>username.github.com</code>$B$H$$$&amp;L>A0$N%j%]%8%H%j$r:n$k!#(B</li>
-<li>index.html$B$r(Bpush$B$9$k!#(B</li>
-</ol>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># $B$3$N%V%m%0$N&gt;l9g(B</span>
-</span><span class='line'>touch index.html
-</span><span class='line'>git init
-</span><span class='line'>git add index.html
-</span><span class='line'>git commit -m <span class="s2">&quot;first commit&quot;</span>
-</span><span class='line'>git remote add origin https://github.com/sohda/sohda.github.com.git
-</span><span class='line'>git push -u origin master
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>$B$3$3$<sup>$G$d$C$?$i%3!&lt;%R!&lt;%?%$%`!#(B10$BJ,$/$i$$5Y7F!#(B</sup></p>
-
-<p>$B5Y7F$7$?$i(B<code>username.github.com</code>$B$K%&#8221;%/%;%9$7$F$_$k!#(B
-$B$H(Bindex.html$B$K=q$$$?FbMF$,I=&lt;($5$l$F$$$k$O$:!*(B
-$B2?$b=q$$$F$J$1$l$P??$CGr$J2hLL!#(B
-404$B$,$G$?$i$b$&amp;>/$75Y7F!#(B
-github$B$N5!G=$r;H$&amp;$N$GH?1G$5$l$k$<sup>$G#1#0J,$/$i$$$+$+$k$=$&amp;$G$9!#(B</sup></p>
-
-<h3>Octopress $B$H$j$$$l$k(B</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd</span> <span class="nv">$HOME</span>
-</span><span class='line'>git clone git://github.com/imathis/octopress.git octopress
-</span><span class='line'><span class="nb">cd </span>octopress
-</span><span class='line'>bundle install
-</span><span class='line'>rake install
-</span><span class='line'>rake setup_github_pages
-</span><span class='line'>rake generate
-</span><span class='line'>rake deploy
-</span><span class='line'>git add .
-</span><span class='line'>git commit -m <span class="s1">&#39;your message&#39;</span>
-</span><span class='line'>git push origin <span class="nb">source</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>$B$3$3$<sup>$G$d$C$?$i!&#8221;:n$C$?%j%]%8%H%j$r$_$K$$$/$H(Bsource$B%V%i%s%A$K%=!&lt;%9%3!&lt;%I$,(Bpush$B$5$l$F$$$<sup>$9!#(B</sup></sup></p>
-
-<h3>$BEj9F$7$F$_$k(B</h3>
-
-<p>$B$5$C$=$/Ej9F!#$NA0$K$9$3$7$@$1@_Dj!#(B</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>vi _config.yml
-</span><span class='line'><span class="nv">$ </span>cat _config.yml
-</span><span class='line'><span class="c"># $BCfN,(B #</span>
-</span><span class='line'>url: http://sohda.github.io
-</span><span class='line'>title: saber_chica Alog
-</span><span class='line'>subtitle: <span class="s2">&quot;saber_chica&#39;s blog&quot;</span>
-</span><span class='line'>author: Tomoko Sohda
-</span><span class='line'>simple_search: http://google.com/search
-</span><span class='line'>description:
-</span><span class='line'><span class="c"># $BCfN,(B #</span>
-</span><span class='line'>permalink: /tomoko/:year/:month/:day/:title/
-</span><span class='line'><span class="c"># $BCfN,(B #</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>$B@_Dj$,=*$o$C$?$i(B</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>rake gen_deploy
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>$B$$$h$$$hEj9F!*(B</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>rake new_post<span class="o">[</span><span class="s2">&quot;test post&quot;</span><span class="o">]</span>
-</span><span class='line'>mkdir -p <span class="nb">source</span>/_posts
-</span><span class='line'>Creating new post: <span class="nb">source</span>/_posts/2013-04-13-test-post.markdown
-</span><span class='line'>vi <span class="nb">source</span>/_posts/2013-04-13-test-post.markdown
-</span><span class='line'><span class="nv">$ </span>rake gen_deploy
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>$B$3$3$<sup>$G$G$-$?$i$b$&amp;(B1$B2s(B<code>username.github.com</code>$B$K%&#8221;%/%;%9(B!</sup>
-$B:#$NEj9F$,I=&lt;($5$l$F$k!*(B</p>
-
-<p>-</p>
-
-<h4>$B;29M(BURL</h4>
-
-<ul>
-<li>http://octopress.org/docs/setup/</li>
-<li>ruby2.0-p0$B$GF0$$$F$/$l$<sup>$7$?!*(B</sup></li>
-</ul>
-
+<div class="entry-content">
 </div>
 
 

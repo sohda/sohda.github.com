@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Github | saber_chica Alog]]></title>
   <link href="http://sohda.github.io/blog/categories/github/atom.xml" rel="self"/>
   <link href="http://sohda.github.io/"/>
-  <updated>2013-04-13T21:24:31+09:00</updated>
+  <updated>2013-04-13T21:25:13+09:00</updated>
   <id>http://sohda.github.io/</id>
   <author>
     <name><![CDATA[Tomoko Sohda]]></name>
@@ -18,124 +18,7 @@
     <link href="http://sohda.github.io/tomoko/2013/04/13/test-post/"/>
     <updated>2013-04-13T16:40:00+09:00</updated>
     <id>http://sohda.github.io/tomoko/2013/04/13/test-post</id>
-    <content type="html"><![CDATA[<h1>$B$3$N%V%m%0$N$D$/$j$+$?(B</h1>
-
-<p>$B:G6a$h$/(B<code>username.github.com/blog/2013/04/13/title</code>$B$H$$$C$?(Buri$B$N%V%m%0$r8+$+$1$k$h$&amp;$K$J$C$?!#(B
-<code>username.github.com</code>$B$,$+$C$3$$$$$+$i:n$j$?$/$J$C$?$N$G:n$C$F$_$?!#(B</p>
-
-<h2>$B$3$N%V%m%0$O2?!)(B</h2>
-
-<p>$B2&lt;$NJ}$K=q$$$F$k(B<code>Powered by Octopress</code>$B$N$H$*$j(B<a href="http://octopress.org/">Octopress</a>$B$G:n$C$F$$$<sup>$9!#(B</sup>
-$B8x&lt;0%5%$%H$K=q$$$F$kDL$j$K$d$C$?$i$G$-$<sup>$7$?!*(B</sup></p>
-
-<h2>$BI,MW$J$b$N(B</h2>
-
-<ul>
-<li>$B6=L#!*(B</li>
-<li>ruby</li>
-<li>github$B%"%+%&amp;%s%H(B</li>
-</ul>
-
-
-<h2>$B$d$C$?$3$H(B</h2>
-
-<h3>$B%V%m%0MQ%j%]%8%H%j:n@.(B</h3>
-
-<p>$B$3$l$O(Bgithub$B$N5!G=!#(B
-$B$3$NJU(B( https://help.github.com/categories/20/articles )$B$r$_$k$H>\$7$/=q$$$F$?!#(B</p>
-
-<ol>
-<li>https://github.com/new $B$+$i(B<code>username.github.com</code>$B$H$$$&amp;L>A0$N%j%]%8%H%j$r:n$k!#(B</li>
-<li>index.html$B$r(Bpush$B$9$k!#(B</li>
-</ol>
-
-
-<p>```sh</p>
-
-<h1>$B$3$N%V%m%0$N>l9g(B</h1>
-
-<p>touch index.html
-git init
-git add index.html
-git commit -m "first commit"
-git remote add origin https://github.com/sohda/sohda.github.com.git
-git push -u origin master
-```</p>
-
-<p>$B$3$3$<sup>$G$d$C$?$i%3!&lt;%R!&lt;%?%$%`!#(B10$BJ,$/$i$$5Y7F!#(B</sup></p>
-
-<p>$B5Y7F$7$?$i(B<code>username.github.com</code>$B$K%"%/%;%9$7$F$_$k!#(B
-$B$H(Bindex.html$B$K=q$$$?FbMF$,I=&lt;($5$l$F$$$k$O$:!*(B
-$B2?$b=q$$$F$J$1$l$P??$CGr$J2hLL!#(B
-404$B$,$G$?$i$b$&amp;>/$75Y7F!#(B
-github$B$N5!G=$r;H$&amp;$N$GH?1G$5$l$k$<sup>$G#1#0J,$/$i$$$+$+$k$=$&amp;$G$9!#(B</sup></p>
-
-<h3>Octopress $B$H$j$$$l$k(B</h3>
-
-<p><code>
-cd $HOME
-git clone git://github.com/imathis/octopress.git octopress
-cd octopress
-bundle install
-rake install
-rake setup_github_pages
-rake generate
-rake deploy
-git add .
-git commit -m 'your message'
-git push origin source
-</code>
-$B$3$3$<sup>$G$d$C$?$i!":n$C$?%j%]%8%H%j$r$_$K$$$/$H(Bsource$B%V%i%s%A$K%=!&lt;%9%3!&lt;%I$,(Bpush$B$5$l$F$$$<sup>$9!#(B</sup></sup></p>
-
-<h3>$BEj9F$7$F$_$k(B</h3>
-
-<p>$B$5$C$=$/Ej9F!#$NA0$K$9$3$7$@$1@<em>Dj!#(B
-```
-$ vi </em>config.yml
-$ cat _config.yml</p>
-
-<h1>$BCfN,(B</h1>
-
-<p>url: http://sohda.github.io
-title: saber_chica Alog
-subtitle: "saber_chica's blog"
-author: Tomoko Sohda
-simple_search: http://google.com/search
-description:</p>
-
-<h1>$BCfN,(B</h1>
-
-<p>permalink: /tomoko/:year/:month/:day/:title/</p>
-
-<h1>$BCfN,(B</h1>
-
-<p>```</p>
-
-<p>$B@_Dj$,=*$o$C$?$i(B
-<code>
-$ rake gen_deploy
-</code></p>
-
-<p>$B$$$h$$$hEj9F!<em>(B
-<code>
-$ rake new_post["test post"]
-mkdir -p source/_posts
-Creating new post: source/_posts/2013-04-13-test-post.markdown
-vi source/_posts/2013-04-13-test-post.markdown
-$ rake gen_deploy
-</code>
-$B$3$3$<sup>$G$G$-$?$i$b$&amp;(B1$B2s(B<code>username.github.com</code>$B$K%"%/%;%9(B!</sup>
-$B:#$NEj9F$,I=&lt;($5$l$F$k!</em>(B</p>
-
-<p>-</p>
-
-<h4>$B;29M(BURL</h4>
-
-<ul>
-<li>http://octopress.org/docs/setup/</li>
-<li>ruby2.0-p0$B$GF0$$$F$/$l$<sup>$7$?!*(B</sup></li>
-</ul>
-
+    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
