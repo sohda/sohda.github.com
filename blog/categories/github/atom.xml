@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[saber_chica Alog]]></title>
-  <link href="http://sohda.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Github | saber_chica Alog]]></title>
+  <link href="http://sohda.github.io/blog/categories/github/atom.xml" rel="self"/>
   <link href="http://sohda.github.io/"/>
   <updated>2013-04-13T21:05:47+09:00</updated>
   <id>http://sohda.github.io/</id>
