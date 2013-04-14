@@ -9,8 +9,8 @@
   <meta name="author" content="Tomoko Sohda">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="最近よくusername.github.com/blog/2013/04/13/titleといったuriのブログを見かけるようになった。
+username.github.comがかっこいいから作りたくなったので作ってみた。 このブログは何？ 下の方に書いてるPowered by &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -72,6 +72,242 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/tomoko/2013/04/14/how-to-create-this-blog/">Octopressとgithub Pagesをつかってブログをつくる</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-14T13:06:00+09:00" pubdate data-updated="true">Apr 14<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近よく<code>username.github.com/blog/2013/04/13/title</code>といったuriのブログを見かけるようになった。<br/>
+<code>username.github.com</code>がかっこいいから作りたくなったので作ってみた。</p>
+
+<h2>このブログは何？</h2>
+
+<p>下の方に書いてる<code>Powered by Octopress</code>のとおり<a href="http://octopress.org/">Octopress</a>で作っています。
+公式サイトに書いてる通りにやったらできました！</p>
+
+<h2>必要なもの</h2>
+
+<ul>
+<li>興味！</li>
+<li>ruby</li>
+<li>githubアカウント</li>
+</ul>
+
+
+<h2>やったこと</h2>
+
+<h3>ブログ用リポジトリ作成</h3>
+
+<p>これはgithubの機能。<br/>
+この辺 <a href="https://help.github.com/categories/20/articles">https://help.github.com/categories/20/articles</a>をみると詳しく書いてた。</p>
+
+<ol>
+<li><a href="https://github.com/new">https://github.com/new</a> から<code>username.github.com</code>という名前のリポジトリを作る。</li>
+<li>index.htmlをpushする。</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># このブログの場合</span>
+</span><span class='line'>touch index.html
+</span><span class='line'>git init
+</span><span class='line'>git add index.html
+</span><span class='line'>git commit -m <span class="s2">&quot;first commit&quot;</span>
+</span><span class='line'>git remote add origin https://github.com/sohda/sohda.github.com.git
+</span><span class='line'>git push -u origin master
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ここまでやったらコーヒータイム。10分くらい休憩。<br/>
+休憩したら<code>username.github.com</code>にアクセスしてみる。<br/>
+とindex.htmlに書いた内容が表示されているはず！<br/>
+何も書いてなければ真っ白な画面。<br/>
+404がでたらもう少し休憩。<br/>
+githubの機能を使うので反映されるまで10分くらいかかるそうです。</p>
+
+<h3>Octopress インストール</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd</span> <span class="nv">$HOME</span>
+</span><span class='line'>git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'><span class="nb">cd </span>octopress
+</span><span class='line'>bundle install
+</span><span class='line'>rake install
+</span><span class='line'>rake setup_github_pages
+</span><span class='line'>rake generate
+</span><span class='line'>rake deploy
+</span><span class='line'>git add .
+</span><span class='line'>git commit -m <span class="s1">&#39;your message&#39;</span>
+</span><span class='line'>git push origin <span class="nb">source</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ここまでやったら、作ったリポジトリをみにいくとsourceブランチにソースコードがpushされています。</p>
+
+<h3>投稿してみる</h3>
+
+<p>さっそく投稿。の前にすこしだけ設定。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>vi _config.yml
+</span><span class='line'><span class="nv">$ </span>cat _config.yml
+</span><span class='line'><span class="c"># 中略 #</span>
+</span><span class='line'>url: http://sohda.github.io
+</span><span class='line'>title: saber_chica Alog
+</span><span class='line'>subtitle: <span class="s2">&quot;saber_chica&#39;s blog&quot;</span>
+</span><span class='line'>author: Tomoko Sohda
+</span><span class='line'>simple_search: http://google.com/search
+</span><span class='line'>description:
+</span><span class='line'><span class="c"># 中略 #</span>
+</span><span class='line'>permalink: /tomoko/:year/:month/:day/:title/
+</span><span class='line'><span class="c"># 中略 #</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>設定が終わったら</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>rake gen_deploy
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>記事作成！</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>rake new_post<span class="o">[</span><span class="s2">&quot;test post&quot;</span><span class="o">]</span>
+</span><span class='line'>mkdir -p <span class="nb">source</span>/_posts
+</span><span class='line'>Creating new post: <span class="nb">source</span>/_posts/2013-04-13-test-post.markdown
+</span><span class='line'>vi <span class="nb">source</span>/_posts/2013-04-13-test-post.markdown
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ブログの内容はここに書く</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>---
+</span><span class='line'>layout: post
+</span><span class='line'>title: <span class="s2">&quot;test post&quot;</span>
+</span><span class='line'>date: 2013-04-13 16:40
+</span><span class='line'>comments: <span class="nb">true</span>
+</span><span class='line'>categories: <span class="o">[</span>Github<span class="o">]</span>
+</span><span class='line'>sharing: <span class="nb">true</span>
+</span><span class='line'>footer: <span class="nb">true</span>
+</span><span class='line'>keywords: <span class="o">[</span>Github<span class="o">]</span>
+</span><span class='line'>---
+</span><span class='line'><span class="c"># ココからブログの本文</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>いよいよ投稿！の前に確認も！</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>rake preview
+</span><span class='line'><span class="nv">$ </span>rake gen_deploy
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ここまでできたらもう1回<code>username.github.com</code>にアクセス!<br/>
+今の投稿が表示されてる！</p>
+
+<p>ブログが文字化けしてる場合はファイルのエンコードがutf-8になってないかも</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>vi <span class="nv">$HOME</span>/.vimrc
+</span><span class='line'><span class="c"># いかの設定にutf-8を指定しておく</span>
+</span><span class='line'><span class="nb">set </span><span class="nv">enc</span><span class="o">=</span>utf-8
+</span><span class='line'><span class="nb">set </span><span class="nv">fenc</span><span class="o">=</span>utf-8
+</span><span class='line'><span class="nb">set </span><span class="nv">fencs</span><span class="o">=</span>utf-8,....
+</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<h4>参考URL</h4>
+
+<ul>
+<li><a href="http://octopress.org/docs/setup/">http://octopress.org/docs/setup/</a>
+
+<ul>
+<li>ruby2.0-p0で動いてくれました！</li>
+</ul>
+</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/tomoko/2013/04/13/test-post/">Test Post</a></h1>
     
     
@@ -114,6 +350,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/tomoko/2013/04/14/how-to-create-this-blog/">Octopressとgithub pagesをつかってブログをつくる</a>
+      </li>
     
       <li class="post">
         <a href="/tomoko/2013/04/13/test-post/">test post</a>
