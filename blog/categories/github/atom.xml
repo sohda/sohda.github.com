@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Github | saber_chica Alog]]></title>
   <link href="http://sohda.github.io/blog/categories/github/atom.xml" rel="self"/>
   <link href="http://sohda.github.io/"/>
-  <updated>2013-04-14T13:45:54+09:00</updated>
+  <updated>2013-04-14T13:51:28+09:00</updated>
   <id>http://sohda.github.io/</id>
   <author>
     <name><![CDATA[Tomoko Sohda]]></name>
@@ -12,6 +12,169 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopressとgithub pagesをつかってブログをつくる]]></title>
+    <link href="http://sohda.github.io/tomoko/2013/04/14/how-to-create-this-blog/"/>
+    <updated>2013-04-14T13:06:00+09:00</updated>
+    <id>http://sohda.github.io/tomoko/2013/04/14/how-to-create-this-blog</id>
+    <content type="html"><![CDATA[<p>最近よく<code>username.github.com/blog/2013/04/13/title</code>といったuriのブログを見かけるようになった。<br/>
+<code>username.github.com</code>がかっこいいから作りたくなったので作ってみた。</p>
+
+<h2>このブログは何？</h2>
+
+<p>下の方に書いてる<code>Powered by Octopress</code>のとおり<a href="http://octopress.org/">Octopress</a>で作っています。
+公式サイトに書いてる通りにやったらできました！</p>
+
+<h2>必要なもの</h2>
+
+<ul>
+<li>興味！</li>
+<li>ruby</li>
+<li>githubアカウント</li>
+</ul>
+
+
+<h2>やったこと</h2>
+
+<h3>ブログ用リポジトリ作成</h3>
+
+<p>これはgithubの機能。<br/>
+この辺 <a href="https://help.github.com/categories/20/articles">https://help.github.com/categories/20/articles</a>をみると詳しく書いてた。</p>
+
+<ol>
+<li><a href="https://github.com/new">https://github.com/new</a> から<code>username.github.com</code>という名前のリポジトリを作る。</li>
+<li>index.htmlをpushする。</li>
+</ol>
+
+
+<p>```sh</p>
+
+<h1>このブログの場合</h1>
+
+<p>touch index.html
+git init
+git add index.html
+git commit -m "first commit"
+git remote add origin https://github.com/sohda/sohda.github.com.git
+git push -u origin master
+```</p>
+
+<p>ここまでやったらコーヒータイム。10分くらい休憩。<br/>
+休憩したら<code>username.github.com</code>にアクセスしてみる。<br/>
+とindex.htmlに書いた内容が表示されているはず！<br/>
+何も書いてなければ真っ白な画面。<br/>
+404がでたらもう少し休憩。<br/>
+githubの機能を使うので反映されるまで10分くらいかかるそうです。</p>
+
+<h3>Octopress インストール</h3>
+
+<p><code>
+cd $HOME
+git clone git://github.com/imathis/octopress.git octopress
+cd octopress
+bundle install
+rake install
+rake setup_github_pages
+rake generate
+rake deploy
+git add .
+git commit -m 'your message'
+git push origin source
+</code>
+ここまでやったら、作ったリポジトリをみにいくとsourceブランチにソースコードがpushされています。</p>
+
+<h3>投稿してみる</h3>
+
+<p>さっそく投稿。の前にすこしだけ設定。
+```
+$ vi <em>config.yml
+$ cat </em>config.yml</p>
+
+<h1>中略</h1>
+
+<p>url: http://sohda.github.io
+title: saber_chica Alog
+subtitle: "saber_chica's blog"
+author: Tomoko Sohda
+simple_search: http://google.com/search
+description:</p>
+
+<h1>中略</h1>
+
+<p>permalink: /tomoko/:year/:month/:day/:title/</p>
+
+<h1>中略</h1>
+
+<p>```</p>
+
+<p>設定が終わったら
+<code>
+$ rake gen_deploy
+</code></p>
+
+<p>記事作成！
+<code>
+$ rake new_post["test post"]
+mkdir -p source/_posts
+Creating new post: source/_posts/2013-04-13-test-post.markdown
+vi source/_posts/2013-04-13-test-post.markdown
+</code></p>
+
+<p>ブログの内容はここに書く</p>
+
+<h2>```</h2>
+
+<p>layout: post
+title: "test post"
+date: 2013-04-13 16:40
+comments: true
+categories: [Github]
+sharing: true
+footer: true</p>
+
+<h2>keywords: [Github]</h2>
+
+<h1>ココからブログの本文</h1>
+
+<p>```</p>
+
+<p>いよいよ投稿！の前に確認も！
+<code>
+$ rake preview
+$ rake gen_deploy
+</code></p>
+
+<p>ここまでできたらもう1回<code>username.github.com</code>にアクセス!<br/>
+今の投稿が表示されてる！</p>
+
+<p>ブログが文字化けしてる場合はファイルのエンコードがutf-8になってないかも</p>
+
+<p>```
+vi $HOME/.vimrc</p>
+
+<h1>いかの設定にutf-8を指定しておく</h1>
+
+<p>set enc=utf-8
+set fenc=utf-8
+set fencs=utf-8,....
+```</p>
+
+<hr />
+
+<h4>参考URL</h4>
+
+<ul>
+<li><a href="http://octopress.org/docs/setup/">http://octopress.org/docs/setup/</a>
+
+<ul>
+<li>ruby2.0-p0で動いてくれました！</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[test post]]></title>
