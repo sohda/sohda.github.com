@@ -9,8 +9,9 @@
   <meta name="author" content="Tomoko Sohda">
 
   
-  <meta name="description" content="最近よくusername.github.com/blog/2013/04/13/titleといったuriのブログを見かけるようになった。
-username.github.comがかっこいいから作りたくなったので作ってみた。 このブログは何？ 下の方に書いてるPowered by &hellip;">
+  <meta name="description" content="fluentdを以下のような構成で使ったときのメモ。
+apacheのaccess_logを収集する場合のメモ。 やったことリスト application server側 fluentd install
+/etc/td-agent/td-agent.conf設定 log server側 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +67,303 @@ username.github.comがかっこいいから作りたくなったので作って�
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tomoko/2013/06/05/fluentd-on-ec2/">fluentdをEC2にいれてapacheのログをMondoDBに残していく</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-05T20:19:00+09:00" pubdate data-updated="true">Jun 5<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>fluentdを以下のような構成で使ったときのメモ。
+apacheのaccess_logを収集する場合のメモ。</p>
+
+<p><img src="/images/2013-06-06/fluentd.png" alt="configuration" /></p>
+
+<h2>やったことリスト</h2>
+
+<ul>
+<li>application server側
+
+<ul>
+<li>fluentd install</li>
+<li>/etc/td-agent/td-agent.conf設定</li>
+</ul>
+</li>
+<li>log server側
+
+<ul>
+<li>MongoDB install</li>
+<li>fluentd install</li>
+<li>/etc/td-agent/td-agent.conf設定</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>やったこと詳しく</h2>
+
+<h3>application server側</h3>
+
+<ul>
+<li>fluentd install</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>ssh -i ec2.pem ec2-user@ec2.com
+</span><span class='line'><span class="c">## 日本時間に合わせる(不要な人は不要)</span>
+</span><span class='line'><span class="nv">$ </span>sudo cp /usr/share/zoneinfo/Japan /etc/localtime
+</span><span class='line'><span class="c">## install</span>
+</span><span class='line'><span class="nv">$ </span>curl -L http://toolbelt.treasure-data.com/sh/install-redhat.sh | sh
+</span><span class='line'><span class="c">### plugin install</span>
+</span><span class='line'><span class="c">## hostname をlog server側に渡したいので必要だったplugin</span>
+</span><span class='line'><span class="nv">$ </span>sudo /usr/lib64/fluent/ruby/bin/fluent-gem install fluent-plugin-config-expander --no-ri --no-rdoc
+</span><span class='line'><span class="nv">$ </span>sudo /etc/init.d/td-agent start
+</span><span class='line'><span class="nv">$ </span>sudo /etc/init.d/td-agent status
+</span><span class='line'>
+</span><span class='line'><span class="c">### test !</span>
+</span><span class='line'><span class="c">## defaultのconfigに8888番が割り当てられている</span>
+</span><span class='line'><span class="nv">$ </span>curl -X POST -d ‘json<span class="o">={</span>“json”:”test”<span class="o">}</span>’ http://localhost:8888/debug.test
+</span><span class='line'><span class="c">## ログ確認 !</span>
+</span><span class='line'><span class="nv">$ </span>tail -1 /var/log/td-agent/td-agent.log
+</span><span class='line'>2013-06-03 11:11:11 +0900 debug.test: <span class="o">{</span><span class="s2">&quot;json&quot;</span>:<span class="s2">&quot;message&quot;</span><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>/etc/td-agent/td-agent.conf設定</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">### 権限グループ変更</span>
+</span><span class='line'><span class="c">## これをやっておかないと起動後に怒られる</span>
+</span><span class='line'><span class="nv">$ </span>sudo chgrp td-agent /var/log/httpd/
+</span><span class='line'><span class="nv">$ </span>sudo chmod g+rx /var/log/httpd/
+</span><span class='line'><span class="c">### 設定ファイル変更</span>
+</span><span class='line'><span class="nv">$ </span>vi /etc/td-agent/td-agetn.conf
+</span><span class='line'><span class="nv">$ </span>cat /etc/td-agent/td-agetn.conf
+</span><span class='line'><span class="c">## 図中 *1 のための設定</span>
+</span><span class='line'>&lt;<span class="nb">source</span>&gt;
+</span><span class='line'>  <span class="nb">type </span>config_expander
+</span><span class='line'>  &lt;config&gt;
+</span><span class='line'>    <span class="nb">type </span>tail
+</span><span class='line'>    format /^<span class="o">(</span>?&lt;<span class="k">${</span><span class="nv">hostname</span><span class="k">}</span>&gt;.*<span class="o">)</span><span class="nv">$/</span>
+</span><span class='line'>    path /var/log/httpd/access_log
+</span><span class='line'>    <span class="c">## ログをどこまで送ったかのポジションを覚えているファイルの設定</span>
+</span><span class='line'>    pos_file /var/log/td-agent/access_log.pos
+</span><span class='line'>    tag apache.access_log
+</span><span class='line'>  &lt;/config&gt;
+</span><span class='line'>&lt;/source&gt;
+</span><span class='line'>
+</span><span class='line'><span class="c">## 図中 *2 のための設定</span>
+</span><span class='line'>&lt;match apache.access_log&gt;
+</span><span class='line'>  <span class="nb">type </span>forward
+</span><span class='line'>  flush_interval 5s
+</span><span class='line'>  <span class="c">## ログを送っロウとしたときに遅れなかった場合のバッファを指定するための設定</span>
+</span><span class='line'>  <span class="c">## デフォルトだとメモリなので設定が必要</span>
+</span><span class='line'>  buffer_type file
+</span><span class='line'>  buffer_path /var/log/td-agent/buffer/access_log
+</span><span class='line'>
+</span><span class='line'>  &lt;server&gt;
+</span><span class='line'>    host ec2.com <span class="c"># EC2のpublic DNS</span>
+</span><span class='line'>    port 24224
+</span><span class='line'>  &lt;/server&gt;
+</span><span class='line'>&lt;/match&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>log server側</h3>
+
+<ul>
+<li>MongoDB install</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>sudo vi /etc/yum.repos.d/10gen.repo
+</span><span class='line'><span class="nv">$ </span>cat /etc/yum.repos.d/10gen.repo
+</span><span class='line'><span class="o">[</span>10gen<span class="o">]</span>
+</span><span class='line'><span class="nv">name</span><span class="o">=</span>10gen Repository
+</span><span class='line'><span class="nv">baseurl</span><span class="o">=</span>http://downloads-distro.mongodb.org/repo/redhat/os/x86_64
+</span><span class='line'><span class="nv">gpgcheck</span><span class="o">=</span>0
+</span><span class='line'><span class="nv">enabled</span><span class="o">=</span>1
+</span><span class='line'><span class="nv">$ </span>sudo yum install mongo-10gen-server mongo-10gen -y
+</span><span class='line'><span class="nv">$ </span>sudo chkconfig mongod on
+</span><span class='line'><span class="nv">$ </span>sudo /etc/init.d/mongod start
+</span><span class='line'><span class="nv">$ </span>sudo /etc/init.d/mongod status
+</span><span class='line'><span class="nv">$ </span>mongo
+</span><span class='line'>&gt; show dbs
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>fluentd install
+
+<ul>
+<li>application server側のfluentd installと一緒</li>
+</ul>
+</li>
+<li>/etc/td-agent/td-agent.conf設定</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>sudo vi /etc/td-agent/td-agent.conf
+</span><span class='line'><span class="nv">$ </span>cat /etc/td-agent/td-agent.conf
+</span><span class='line'><span class="c">## 図中 *3 のための設定</span>
+</span><span class='line'>&lt;<span class="nb">source</span>&gt;
+</span><span class='line'>  <span class="nb">type </span>forward
+</span><span class='line'>  port 24224
+</span><span class='line'>&lt;/source&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;match apache.access_log&gt;
+</span><span class='line'>  <span class="nb">type </span>mongo
+</span><span class='line'>  database apache
+</span><span class='line'>  collection access_log
+</span><span class='line'>
+</span><span class='line'>  host localhost
+</span><span class='line'>  port 27017
+</span><span class='line'>
+</span><span class='line'>  flush_interval 10s
+</span><span class='line'>&lt;/match&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>ポート解放
+
+<ul>
+<li>AWSコンソール上などからtcp/udpの27017を解放してあげる</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>動作確認</h3>
+
+<ul>
+<li>application serverにブラウザなどからアクセスする</li>
+<li>log serverに入ってmongo queryで確認</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>mongo apache
+</span><span class='line'>&gt; db.access_log.find<span class="o">({</span><span class="s1">&#39;time&#39;</span>:<span class="o">{</span><span class="nv">$gt</span>:ISODate<span class="o">(</span><span class="s2">&quot;2013-06-03T13:13:13Z&quot;</span><span class="o">)}})</span>
+</span><span class='line'><span class="o">{</span> <span class="s2">&quot;_id&quot;</span> : ObjectId<span class="o">(</span><span class="s2">&quot;5191c59a2e3d4172a30017e2&quot;</span><span class="o">)</span>, <span class="s2">&quot;ip-10-10-10-10&quot;</span> : <span class="s2">&quot;x-forwarded-for:\&quot;-\&quot;\thost:20.20.20.20\tident:-\tuser:-\ttime:[03/July/2013:13:03:03 +0900]\trequest-first-line:\&quot;GET / HTTP/1.1\&quot;\tstatus:200\tresponse-size:-\trefer:\&quot;-\&quot;\tuser-agent:\&quot;USER-AGENT\&quot;\trequest-time:6666&quot;</span>, <span class="s2">&quot;time&quot;</span> : ISODate<span class="o">(</span><span class="s2">&quot;2013-06-03T04:03:03Z&quot;</span><span class="o">)</span> <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -350,6 +648,10 @@ githubの機能を使うので反映されるまで10分くらいかかるそう
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/tomoko/2013/06/05/fluentd-on-ec2/">fluentdをEC2にいれてapacheのログをMondoDBに残していく</a>
+      </li>
     
       <li class="post">
         <a href="/tomoko/2013/04/14/how-to-create-this-blog/">Octopressとgithub pagesをつかってブログをつくる</a>
