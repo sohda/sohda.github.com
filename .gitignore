@@ -10,5 +10,6 @@ source.old
 source/_stash
 source/stylesheets/screen.css
 vendor
+bundle
 node_modules
-.*~
+*~
