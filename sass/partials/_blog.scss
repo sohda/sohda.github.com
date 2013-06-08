@@ -92,7 +92,7 @@ article + article {
   article { padding-top: 2em; }
   article header { background: none; padding-bottom: 0; }
   article h1 {
-    font-size: 2.2em;
+    font-size: 1.4em;
     a { color: inherit; &:hover { color: $link-color-hover; } }
   }
   a[rel=full-article] {
@@ -124,7 +124,7 @@ article + article {
 
 #content div.pagination {
   text-align: center;
-  font-size: .95em;
+  font-size: .7em;
   position: relative;
   background: $img-border top left repeat-x;
   padding: {top: 1.5em; bottom: 1.5em;}
