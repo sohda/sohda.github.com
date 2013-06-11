@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Github | I'm not a teapot]]></title>
   <link href="http://sohda.github.io/blog/categories/github/atom.xml" rel="self"/>
   <link href="http://sohda.github.io/"/>
-  <updated>2013-06-11T00:39:04+09:00</updated>
+  <updated>2013-06-11T23:37:09+09:00</updated>
   <id>http://sohda.github.io/</id>
   <author>
     <name><![CDATA[Tomoko Sohda]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Octopressとgithub pagesをつかってブログをつくる]]></title>
-    <link href="http://sohda.github.io/tomoko/2013/04/14/how-to-create-this-blog/"/>
+    <link href="http://sohda.github.io/blog/2013/04/14/how-to-create-this-blog/"/>
     <updated>2013-04-14T13:06:00+09:00</updated>
-    <id>http://sohda.github.io/tomoko/2013/04/14/how-to-create-this-blog</id>
+    <id>http://sohda.github.io/blog/2013/04/14/how-to-create-this-blog</id>
     <content type="html"><![CDATA[<p>最近よく<code>username.github.com/blog/2013/04/13/title</code>といったuriのブログを見かけるようになった。<br/>
 <code>username.github.com</code>がかっこいいから作りたくなったので作ってみた。</p>
 
@@ -178,9 +178,9 @@ set fencs=utf-8,....
   
   <entry>
     <title type="html"><![CDATA[test post]]></title>
-    <link href="http://sohda.github.io/tomoko/2013/04/13/test-post/"/>
+    <link href="http://sohda.github.io/blog/2013/04/13/test-post/"/>
     <updated>2013-04-13T16:40:00+09:00</updated>
-    <id>http://sohda.github.io/tomoko/2013/04/13/test-post</id>
+    <id>http://sohda.github.io/blog/2013/04/13/test-post</id>
     <content type="html"><![CDATA[
 ]]></content>
   </entry>

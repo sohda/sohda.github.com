@@ -4,7 +4,7 @@
   <title><![CDATA[Category: fluentd | I'm not a teapot]]></title>
   <link href="http://sohda.github.io/blog/categories/fluentd/atom.xml" rel="self"/>
   <link href="http://sohda.github.io/"/>
-  <updated>2013-06-11T00:39:04+09:00</updated>
+  <updated>2013-06-11T23:37:09+09:00</updated>
   <id>http://sohda.github.io/</id>
   <author>
     <name><![CDATA[Tomoko Sohda]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[fluentdをEC2にいれてapacheのログをMondoDBに残していく]]></title>
-    <link href="http://sohda.github.io/tomoko/2013/06/05/fluentd-on-ec2/"/>
+    <link href="http://sohda.github.io/blog/2013/06/05/fluentd-on-ec2/"/>
     <updated>2013-06-05T20:19:00+09:00</updated>
-    <id>http://sohda.github.io/tomoko/2013/06/05/fluentd-on-ec2</id>
+    <id>http://sohda.github.io/blog/2013/06/05/fluentd-on-ec2</id>
     <content type="html"><![CDATA[<p>fluentdを以下のような構成で使ったときのメモ。 <br/>
 apacheのaccess_logを収集する場合。</p>
 

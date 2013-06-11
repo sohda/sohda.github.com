@@ -4,7 +4,7 @@
   <title><![CDATA[I'm not a teapot]]></title>
   <link href="http://sohda.github.io/atom.xml" rel="self"/>
   <link href="http://sohda.github.io/"/>
-  <updated>2013-06-11T00:39:04+09:00</updated>
+  <updated>2013-06-11T23:37:09+09:00</updated>
   <id>http://sohda.github.io/</id>
   <author>
     <name><![CDATA[Tomoko Sohda]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[syslogのことをちょっと調べたのでメモ]]></title>
-    <link href="http://sohda.github.io/tomoko/2013/06/11/investigate-syslog/"/>
+    <link href="http://sohda.github.io/blog/2013/06/11/investigate-syslog/"/>
     <updated>2013-06-11T20:31:00+09:00</updated>
-    <id>http://sohda.github.io/tomoko/2013/06/11/investigate-syslog</id>
+    <id>http://sohda.github.io/blog/2013/06/11/investigate-syslog</id>
     <content type="html"><![CDATA[<p>ログ収集をしていて気になったのでまとめました。  <br/>
 /var/log/* の以下のログの役目(いつ誰が出力するのか)を調べてみた。</p>
 
@@ -191,7 +191,7 @@
 <ul>
 <li>ログインのうち成功したものの情報が記録される</li>
 <li>再起動についてはrebootというユーザで記録が残る</li>
-<li>wtmpコマンドで参照できる</li>
+<li>lastコマンドで参照できる</li>
 </ul>
 </li>
 </ul>
@@ -244,9 +244,9 @@
   
   <entry>
     <title type="html"><![CDATA[fluentdをEC2にいれてapacheのログをMondoDBに残していく]]></title>
-    <link href="http://sohda.github.io/tomoko/2013/06/05/fluentd-on-ec2/"/>
+    <link href="http://sohda.github.io/blog/2013/06/05/fluentd-on-ec2/"/>
     <updated>2013-06-05T20:19:00+09:00</updated>
-    <id>http://sohda.github.io/tomoko/2013/06/05/fluentd-on-ec2</id>
+    <id>http://sohda.github.io/blog/2013/06/05/fluentd-on-ec2</id>
     <content type="html"><![CDATA[<p>fluentdを以下のような構成で使ったときのメモ。 <br/>
 apacheのaccess_logを収集する場合。</p>
 
@@ -514,9 +514,9 @@ apacheのaccess_logを収集する場合。</p>
   
   <entry>
     <title type="html"><![CDATA[Octopressとgithub pagesをつかってブログをつくる]]></title>
-    <link href="http://sohda.github.io/tomoko/2013/04/14/how-to-create-this-blog/"/>
+    <link href="http://sohda.github.io/blog/2013/04/14/how-to-create-this-blog/"/>
     <updated>2013-04-14T13:06:00+09:00</updated>
-    <id>http://sohda.github.io/tomoko/2013/04/14/how-to-create-this-blog</id>
+    <id>http://sohda.github.io/blog/2013/04/14/how-to-create-this-blog</id>
     <content type="html"><![CDATA[<p>最近よく<code>username.github.com/blog/2013/04/13/title</code>といったuriのブログを見かけるようになった。<br/>
 <code>username.github.com</code>がかっこいいから作りたくなったので作ってみた。</p>
 
@@ -723,9 +723,9 @@ githubの機能を使うので反映されるまで10分くらいかかるそう
   
   <entry>
     <title type="html"><![CDATA[test post]]></title>
-    <link href="http://sohda.github.io/tomoko/2013/04/13/test-post/"/>
+    <link href="http://sohda.github.io/blog/2013/04/13/test-post/"/>
     <updated>2013-04-13T16:40:00+09:00</updated>
-    <id>http://sohda.github.io/tomoko/2013/04/13/test-post</id>
+    <id>http://sohda.github.io/blog/2013/04/13/test-post</id>
     <content type="html"><![CDATA[
 ]]></content>
   </entry>

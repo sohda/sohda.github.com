@@ -4,7 +4,7 @@
   <title><![CDATA[Category: linux | I'm not a teapot]]></title>
   <link href="http://sohda.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://sohda.github.io/"/>
-  <updated>2013-06-11T00:39:04+09:00</updated>
+  <updated>2013-06-11T23:37:09+09:00</updated>
   <id>http://sohda.github.io/</id>
   <author>
     <name><![CDATA[Tomoko Sohda]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[syslogのことをちょっと調べたのでメモ]]></title>
-    <link href="http://sohda.github.io/tomoko/2013/06/11/investigate-syslog/"/>
+    <link href="http://sohda.github.io/blog/2013/06/11/investigate-syslog/"/>
     <updated>2013-06-11T20:31:00+09:00</updated>
-    <id>http://sohda.github.io/tomoko/2013/06/11/investigate-syslog</id>
+    <id>http://sohda.github.io/blog/2013/06/11/investigate-syslog</id>
     <content type="html"><![CDATA[<p>ログ収集をしていて気になったのでまとめました。  <br/>
 /var/log/* の以下のログの役目(いつ誰が出力するのか)を調べてみた。</p>
 
@@ -160,13 +160,13 @@ DESCRIPTION</p>
 <ul>
 <li>ログインのうち成功したものの情報が記録される</li>
 <li>再起動についてはrebootというユーザで記録が残る</li>
-<li>wtmpコマンドで参照できる</li>
+<li>lastコマンドで参照できる</li>
 </ul>
 </li>
 </ul>
 
 
-<p>```sh
+<p>```
 $ man last
 …
 DESCRIPTION</p>
