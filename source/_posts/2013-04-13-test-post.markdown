@@ -1,0 +1,10 @@
+---
+layout: post
+title: "test post"
+date: 2013-04-13 16:40
+comments: true
+categories: [Github]
+sharing: true
+footer: true
+keywords: [Github]
+---
