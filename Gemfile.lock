@@ -29,7 +29,7 @@ GEM
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)
     rack (1.6.11)
-    rack-protection (1.5.0)
+    rack-protection (1.5.5)
       rack
     rake (0.9.6)
     rb-fsevent (0.9.3)
